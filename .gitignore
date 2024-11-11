@@ -1,0 +1,55 @@
+# Ignore Android Studio files
+.idea/
+.gradle/
+local.properties
+/.cxx/
+
+# Ignore build outputs
+/build/
+# Uncomment if you have multiple build types
+# /app/build/
+
+# Ignore IntelliJ files
+*.iml
+
+# Ignore Gradle wrapper jar and properties
+/gradle-wrapper.jar
+/gradle-wrapper.properties
+
+# Ignore Maven and Gradle caches
+.gradle/
+/maven/
+/*/*.iml
+
+# Ignore keystore files
+*.jks
+*.keystore
+
+# Ignore Android NDK folder
+/.externalNativeBuild/
+
+# Ignore Android generated files
+/generated/
+
+# Ignore version control specific folders (e.g., Git or SVN)
+.git/
+
+# Ignore logs and temporary files
+*.log
+*.temp
+*.swp
+*.bak
+*.orig
+*.bat
+
+# Ignore user-specific configuration files
+*.user
+*.sublime-project
+*.sublime-workspace
+
+# Ignore node_modules (for React Native or other JavaScript/Node-based projects)
+node_modules/
+
+# Ignore any other files you don't want in your repo
+/build/
+.gradle

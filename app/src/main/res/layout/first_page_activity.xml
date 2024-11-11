@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:hapticFeedbackEnabled="false">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/first_page_text"
+        android:textAlignment="center"
+        android:textColor="@color/monty"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="91dp"
+        android:backgroundTintMode="add"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="@string/hint_name"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textColorHint="#8C000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/monty"
+        android:fontFamily="@font/roboto_bold"
+        android:onClick="onClickNextPage"
+        android:text="@string/button_start"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edName"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
