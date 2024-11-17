@@ -5,18 +5,20 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".CardFragment">
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:fontFamily="@font/poppins_bold"
-        android:textSize="25sp"
-        android:layout_centerInParent="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Card Page" />
-
+    
+    <Button
+        android:id="@+id/button_add_card"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="31dp"
+        android:background="@drawable/card_round_button"
+        android:fontFamily="@font/roboto_reg1"
+        android:text="+"
+        android:textColor="@color/monty"
+        android:textSize="64sp" />
 </RelativeLayout>

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,17 @@ public class CardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_card, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_card, container, false);
+        Button button_add = rootView.findViewById(R.id.button_add_card);
+
+        // Кнопка добавления карту
+        button_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Button add card", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return rootView;
     }
 }

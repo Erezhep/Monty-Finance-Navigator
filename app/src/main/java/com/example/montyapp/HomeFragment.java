@@ -2,23 +2,38 @@ package com.example.montyapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.montyapp.templates.Item;
+import com.example.montyapp.templates.ItemsHistory;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,9 +45,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() {}
 
     /**
      * Use this factory method to create a new instance of
@@ -55,6 +68,9 @@ public class HomeFragment extends Fragment {
     SharedPreferences sharedPreferences;
     String user;
     TextView textView1;
+    private List<Item> payments;
+    private ListView listView;
+    private ArrayAdapter<String> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +90,32 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        payments = new ArrayList<>();
+        payments.add(new Item("Kaspi Bank", "+ 1500,00"));
+        payments.add(new Item("Halyk Bank", "- 1200,50"));
+        payments.add(new Item("Jusan Bank", "+ 3000,75"));
+        payments.add(new Item("Bank #1", "1100.25"));
+        payments.add(new Item("Bank #2", "1200.50"));
+        payments.add(new Item("Bank #3", "1300.75"));
+        payments.add(new Item("Bank #4", "1401.00"));
+        payments.add(new Item("Bank #5", "1501.25"));
+        payments.add(new Item("Bank #6", "1601.50"));
+        payments.add(new Item("Bank #7", "1701.75"));
+        payments.add(new Item("Bank #8", "1802.00"));
+        payments.add(new Item("Bank #9", "1902.25"));
+        payments.add(new Item("Bank #10", "2002.50"));
+        payments.add(new Item("Bank #11", "2102.75"));
+        payments.add(new Item("Bank #12", "2203.00"));
+        payments.add(new Item("Bank #13", "2303.25"));
+        payments.add(new Item("Bank #14", "2403.50"));
+        payments.add(new Item("Bank #15", "2503.75"));
+
+        listView = rootView.findViewById(R.id.listHistory);
+
+        ItemsHistory adapter = new ItemsHistory(getContext(), payments);
+        listView.setAdapter(adapter);
+
+
         // TextView text = rootView.findViewById(R.id.nameText1);
         // text.setText(user);
 
