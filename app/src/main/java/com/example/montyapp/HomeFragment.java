@@ -1,5 +1,7 @@
 package com.example.montyapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +52,10 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    SharedPreferences sharedPreferences;
+    String user;
+    TextView textView1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,9 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        sharedPreferences = getActivity().getSharedPreferences("AppData", Context.MODE_PRIVATE);
+        user = sharedPreferences.getString("username", "default");
+
     }
 
     @Override
@@ -63,8 +74,20 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        TextView text = rootView.findViewById(R.id.textView1);
-        Log.d("HomeFragment", "TextView found: " + (text != null));
+        // TextView text = rootView.findViewById(R.id.nameText1);
+        // text.setText(user);
+
+        Button buttonAdd = rootView.findViewById(R.id.buttonAdd);
+        buttonAdd.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Button +", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return rootView;
     }
+
+
 }

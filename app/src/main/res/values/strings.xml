@@ -7,6 +7,9 @@
     <string name="card_page_text">Карта</string>
     <string name="statistic_page_text">Статистика</string>
     <string name="profile_page_text">Профиль</string>
+    <string name="welcome_text">Қош келдіңіз!</string>
+    <string name="your_balance">Сіздің баланста:</string>
+    <string name="text_history">Тарих</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
