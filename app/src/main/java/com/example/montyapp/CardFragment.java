@@ -88,7 +88,6 @@ public class CardFragment extends Fragment {
 
         // Найдите Spinner и EditText в пользовательском макете
         EditText editText = dialogView.findViewById(R.id.edit_text_input);
-        Spinner spinner = dialogView.findViewById(R.id.spinner_selection);
 
         // Создайте и настройте AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
@@ -97,11 +96,9 @@ public class CardFragment extends Fragment {
                 .setPositiveButton("ОК", (dialog, which) -> {
                     // Получите данные из EditText и Spinner
                     String inputText = editText.getText().toString();
-                    String selectedItem = spinner.getSelectedItem().toString();
 
                     // Обработка данных
                     System.out.println("Введён текст: " + inputText);
-                    System.out.println("Выбран элемент: " + selectedItem);
                 })
                 .setNegativeButton("Отмена", (dialog, which) -> {
                     // Закрытие диалога

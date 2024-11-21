@@ -3,17 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    style="@style/Theme.MaterialComponents.Dialog.Alert"
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="16dp">
 
-    <!-- Spinner для выбора -->
-    <Spinner
-        android:id="@+id/spinner_selection"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:entries="@array/sample_spinner_items" />
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/bottom_nav_color"
+        android:hint="Картаны енгізіңіз:"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
     <!-- Пробел между элементами -->
     <Space
@@ -28,6 +30,7 @@
         android:inputType="numberDecimal"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:hint="..." />
+        android:hint="Ақша суммасын енгізіңіз:"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
 </LinearLayout>
