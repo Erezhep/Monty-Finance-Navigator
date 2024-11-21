@@ -50,8 +50,18 @@ public class ItemsHistory extends BaseAdapter {
         // Устанавливаем данные для текущего элемента
         Item currentItem = items.get(position);
         text1.setText(currentItem.getTitle());  // Название
-        text4.setText(currentItem.getPrice());  // Цена
 
+        String priceText = String.format("%.2f", currentItem.getPrice());
+        if (currentItem.getPrice() > 0){
+            priceText = "+" + priceText;
+        }
+        text4.setText(priceText);
+
+        if (currentItem.getPrice() > 0){
+            text4.setTextColor(context.getResources().getColor(R.color.green)); // Цена
+        }else{
+            text4.setTextColor(context.getResources().getColor(R.color.red));
+        }
         return convertView;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.montyapp;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -65,13 +68,47 @@ public class CardFragment extends Fragment {
         Button button_add = rootView.findViewById(R.id.button_add_card);
 
         // Кнопка добавления карту
-        button_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Button add card", Toast.LENGTH_SHORT).show();
-            }
-        });
+        //button_add.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View view) {
+                //Toast.makeText(getContext(), "Button add card", Toast.LENGTH_SHORT).show();
+                //   }
+        //});
+
+        // Найдите кнопку и установите слушатель
+        rootView.findViewById(R.id.button_add_card).setOnClickListener(v -> showCustomDialog());
 
         return rootView;
     }
+
+    private void showCustomDialog() {
+        // Используйте LayoutInflater для загрузки пользовательского макета
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.card_alert_dialog, null);
+
+        // Найдите Spinner и EditText в пользовательском макете
+        EditText editText = dialogView.findViewById(R.id.edit_text_input);
+        Spinner spinner = dialogView.findViewById(R.id.spinner_selection);
+
+        // Создайте и настройте AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Ваш выбор")
+                .setView(dialogView) // Установите пользовательский макет
+                .setPositiveButton("ОК", (dialog, which) -> {
+                    // Получите данные из EditText и Spinner
+                    String inputText = editText.getText().toString();
+                    String selectedItem = spinner.getSelectedItem().toString();
+
+                    // Обработка данных
+                    System.out.println("Введён текст: " + inputText);
+                    System.out.println("Выбран элемент: " + selectedItem);
+                })
+                .setNegativeButton("Отмена", (dialog, which) -> {
+                    // Закрытие диалога
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
+    }
+
 }

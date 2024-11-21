@@ -2,10 +2,10 @@ package com.example.montyapp.templates;
 
 public class Item {
     private String title; // Название
-    private String price; // Цена
+    private double price; // Цена
 
     // Конструктор
-    public Item(String title, String price) {
+    public Item(String title, double price) {
         this.title = title;
         this.price = price;
     }
@@ -15,7 +15,7 @@ public class Item {
         return title;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 }

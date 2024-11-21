@@ -91,24 +91,23 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         payments = new ArrayList<>();
-        payments.add(new Item("Kaspi Bank", "+ 1500,00"));
-        payments.add(new Item("Halyk Bank", "- 1200,50"));
-        payments.add(new Item("Jusan Bank", "+ 3000,75"));
-        payments.add(new Item("Bank #1", "1100.25"));
-        payments.add(new Item("Bank #2", "1200.50"));
-        payments.add(new Item("Bank #3", "1300.75"));
-        payments.add(new Item("Bank #4", "1401.00"));
-        payments.add(new Item("Bank #5", "1501.25"));
-        payments.add(new Item("Bank #6", "1601.50"));
-        payments.add(new Item("Bank #7", "1701.75"));
-        payments.add(new Item("Bank #8", "1802.00"));
-        payments.add(new Item("Bank #9", "1902.25"));
-        payments.add(new Item("Bank #10", "2002.50"));
-        payments.add(new Item("Bank #11", "2102.75"));
-        payments.add(new Item("Bank #12", "2203.00"));
-        payments.add(new Item("Bank #13", "2303.25"));
-        payments.add(new Item("Bank #14", "2403.50"));
-        payments.add(new Item("Bank #15", "2503.75"));
+        payments.add(new Item("Kaspi Bank", 1500.00));
+        payments.add(new Item("Halyk Bank", -1200.50));
+        payments.add(new Item("Jusan Bank", 3000.75));
+        payments.add(new Item("Forte Bank", 2000.00));
+        payments.add(new Item("Eurasian Bank", -750.25));
+        payments.add(new Item("Bank CenterCredit", 500.00));
+        payments.add(new Item("ATF Bank", 1000.75));
+        payments.add(new Item("Sberbank", -1350.50));
+        payments.add(new Item("Kaspi Bank", 2450.00));
+        payments.add(new Item("Halyk Bank", -980.60));
+        payments.add(new Item("Jusan Bank", 4300.85));
+        payments.add(new Item("Forte Bank", -1200.15));
+        payments.add(new Item("Eurasian Bank", 1800.00));
+        payments.add(new Item("Bank CenterCredit", -620.30));
+        payments.add(new Item("ATF Bank", 750.00));
+        payments.add(new Item("Sberbank", 1500.25));
+
 
         listView = rootView.findViewById(R.id.listHistory);
 

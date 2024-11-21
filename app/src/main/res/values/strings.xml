@@ -29,4 +29,10 @@
         <item>Duolingo Plus      2990,00</item>
     </string-array>
 
+    <string-array name="sample_spinner_items">
+        <item>Выбор 1</item>
+        <item>Выбор 2</item>
+        <item>Выбор 3</item>
+    </string-array>
+
 </resources>
