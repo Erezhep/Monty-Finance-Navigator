@@ -9,13 +9,14 @@
     android:padding="16dp">
 
     <EditText
+        android:id="@+id/edit_text_input_2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Картаны енгізіңіз:"
         android:inputType="text"
         android:textColor="@color/black"
-        android:textColorHint="@color/bottom_nav_color"
-        android:hint="Картаны енгізіңіз:"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+        android:textColorHint="@color/bottom_nav_color" />
 
     <!-- Пробел между элементами -->
     <Space

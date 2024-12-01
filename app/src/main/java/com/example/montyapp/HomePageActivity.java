@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.montyapp.db_sqlite.AppDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -20,6 +21,9 @@ public class HomePageActivity extends AppCompatActivity {
 
         // Устанавливаем слушатель для выбора пунктов меню
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+        AppDatabase db = AppDatabase.getDatabase(this);
+
 
         // Загружаем фрагмент по умолчанию
         if (savedInstanceState == null) {

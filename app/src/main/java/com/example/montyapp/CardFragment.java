@@ -3,14 +3,25 @@ package com.example.montyapp;
 import android.app.AlertDialog;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import com.example.montyapp.db_sqlite.AppDatabase;
+import com.example.montyapp.db_sqlite.Card;
+import com.example.montyapp.db_sqlite.Dao.CardDao;
+import com.example.montyapp.db_sqlite.Dao.PaymentsDao;
+import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.room.Room;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -67,14 +78,6 @@ public class CardFragment extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_card, container, false);
         Button button_add = rootView.findViewById(R.id.button_add_card);
 
-        // Кнопка добавления карту
-        //button_add.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View view) {
-                //Toast.makeText(getContext(), "Button add card", Toast.LENGTH_SHORT).show();
-                //   }
-        //});
-
         // Найдите кнопку и установите слушатель
         rootView.findViewById(R.id.button_add_card).setOnClickListener(v -> showCustomDialog());
 
@@ -88,6 +91,9 @@ public class CardFragment extends Fragment {
 
         // Найдите Spinner и EditText в пользовательском макете
         EditText editText = dialogView.findViewById(R.id.edit_text_input);
+        EditText editText2 = dialogView.findViewById(R.id.edit_text_input_2);
+
+
 
         // Создайте и настройте AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
@@ -95,10 +101,26 @@ public class CardFragment extends Fragment {
                 .setView(dialogView) // Установите пользовательский макет
                 .setPositiveButton("ОК", (dialog, which) -> {
                     // Получите данные из EditText и Spinner
-                    String inputText = editText.getText().toString();
 
-                    // Обработка данных
-                    System.out.println("Введён текст: " + inputText);
+                    String card = editText2.getText().toString();
+                    String summa = editText.getText().toString();
+
+                    if (!TextUtils.isEmpty(card)){
+                        new Thread(() -> {
+                            AppDatabase db = AppDatabase.getDatabase(requireContext());
+                            CardDao cardDao = db.cardDao();
+                            int res_is_card = cardDao.checkIfCardExists(card);
+                            requireActivity().runOnUiThread(() -> {
+                                if (res_is_card > 0) {
+                                    Toast.makeText(getContext(), "Card with this title already exists.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), "Card HAVE", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }).start();
+                    }else{
+                        Toast.makeText(getContext(), "Field is empty", Toast.LENGTH_LONG).show();
+                    }
                 })
                 .setNegativeButton("Отмена", (dialog, which) -> {
                     // Закрытие диалога
@@ -107,5 +129,4 @@ public class CardFragment extends Fragment {
                 .create()
                 .show();
     }
-
 }
