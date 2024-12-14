@@ -7,7 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.montyapp.db_sqlite.AppDatabase;
+import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
+import com.example.montyapp.fragments.CardFragment;
+import com.example.montyapp.fragments.HomeFragment;
+import com.example.montyapp.fragments.ProfileFragment;
+import com.example.montyapp.fragments.StatisticFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -55,4 +63,14 @@ public class HomePageActivity extends AppCompatActivity {
         }
         return false;
     };
+
+    private void add_payment_types_in_db(){
+        // Использование ExecutorService для работы с базой данных в фоновом потоке
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            AppDatabase db = AppDatabase.getDatabase(this);
+            TypePaymentsDao typePaymentsDao = db.typePaymentsDao();
+            String[] paymentTypes = {};
+        });
+    }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/_new_home_icon"
+        android:title="@string/home_page_text" />
+    <item
+    android:id="@+id/card"
+    android:icon="@drawable/_new_card_icon"
+    android:title="@string/card_page_text" />
+
+    <item
+    android:id="@+id/statistic"
+    android:icon="@drawable/_new_statistic_icon"
+    android:title="@string/statistic_page_text" />
+
+    <item
+    android:id="@+id/profile"
+    android:icon="@drawable/_new_user_icon"
+    android:title="@string/profile_page_text" />
+</menu>

@@ -5,155 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/textWelcomeBack"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/layout_background_color_home_page">
-
-
-        <TextView
-            android:id="@+id/textName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Сәлем, Бекарыс"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/welcome_text"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="185dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/roboto_reg1"
-            android:text="@string/text_history"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <ListView
-            android:id="@+id/listHistory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="105dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:background="@color/white"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="125dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/rounded_border">
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/your_balance"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="82dp"
-            android:fontFamily="@font/roboto_reg1"
-            android:text="₸ 1540,00"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="+"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="38sp" />
-    </RelativeLayout>
-
+        android:text="@string/welcome_back"
+        android:textColor="@color/text_color" />
 </RelativeLayout>

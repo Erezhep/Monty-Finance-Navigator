@@ -26,12 +26,12 @@
     <!-- EditText для ввода текста -->
     <EditText
         android:id="@+id/edit_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
         android:hint="Ақша суммасын енгізіңіз:"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+        android:inputType="number|numberDecimal|numberSigned"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
 </LinearLayout>

@@ -11,28 +11,11 @@
     <string name="your_balance">Сіздің баланста:</string>
     <string name="statistica_text">Статистика</string>
     <string name="text_history">Тарих</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="history">
-        <item>Yandex Plus       800,00  </item>
-        <item>Beeline           15000,00</item>
-        <item>Beeline           15000,00</item>
-        <item>Beeline           15000,00</item>
-        <item>Avtobys QR           90,00</item>
-        <item>Kaspi Bank        -2000,00</item>
-        <item>Avtobys QR           90,00</item>
-        <item>Avtobys QR           90,00</item>
-        <item>Avtobys QR           90,00</item>
-        <item>Duolingo Plus      2990,00</item>
-        <item>Duolingo Plus      2990,00</item>
-        <item>Duolingo Plus      2990,00</item>
-    </string-array>
+    <string name="welcome_back">Қайта оралуыңызбен,</string>
 
-    <string-array name="sample_spinner_items">
-        <item>Выбор 1</item>
-        <item>Выбор 2</item>
-        <item>Выбор 3</item>
-    </string-array>
 
 </resources>

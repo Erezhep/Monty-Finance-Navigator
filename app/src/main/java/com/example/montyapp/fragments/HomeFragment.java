@@ -1,12 +1,9 @@
-package com.example.montyapp;
+package com.example.montyapp.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,15 +15,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.montyapp.R;
 import com.example.montyapp.templates.Item;
 import com.example.montyapp.templates.ItemsHistory;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * A simple {@link Fragment} subclass.

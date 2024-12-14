@@ -1,20 +1,14 @@
-package com.example.montyapp;
+package com.example.montyapp.fragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 
+import com.example.montyapp.R;
 import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Card;
 import com.example.montyapp.db_sqlite.Dao.CardDao;
-import com.example.montyapp.db_sqlite.Dao.PaymentsDao;
-import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
-import androidx.room.Room;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -23,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,41 +82,60 @@ public class CardFragment extends Fragment {
     }
 
     private void showCustomDialog() {
-        // Используйте LayoutInflater для загрузки пользовательского макета
+        // Используем LayoutInflater для загрузки пользовательского макета
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.card_alert_dialog, null);
 
-        // Найдите Spinner и EditText в пользовательском макете
+        // Найдите EditText в пользовательском макете
         EditText editText = dialogView.findViewById(R.id.edit_text_input);
         EditText editText2 = dialogView.findViewById(R.id.edit_text_input_2);
-
-
 
         // Создайте и настройте AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Ваш выбор")
                 .setView(dialogView) // Установите пользовательский макет
                 .setPositiveButton("ОК", (dialog, which) -> {
-                    // Получите данные из EditText и Spinner
+                    // Получите данные из EditText
+                    String cardTitle = editText2.getText().toString();
+                    String cardTotalString = editText.getText().toString();
 
-                    String card = editText2.getText().toString();
-                    String summa = editText.getText().toString();
+                    if (!TextUtils.isEmpty(cardTitle) && !TextUtils.isEmpty(cardTotalString)) {
+                        try {
+                            // Попробуем преобразовать строку в число
+                            double cardTotal = Double.parseDouble(cardTotalString);
 
-                    if (!TextUtils.isEmpty(card)){
-                        new Thread(() -> {
-                            AppDatabase db = AppDatabase.getDatabase(requireContext());
-                            CardDao cardDao = db.cardDao();
-                            int res_is_card = cardDao.checkIfCardExists(card);
-                            requireActivity().runOnUiThread(() -> {
+                            // Использование ExecutorService для работы с базой данных в фоновом потоке
+                            ExecutorService executorService = Executors.newSingleThreadExecutor();
+                            executorService.execute(() -> {
+                                AppDatabase db = AppDatabase.getDatabase(requireContext());
+                                CardDao cardDao = db.cardDao();
+                                int res_is_card = cardDao.checkIfCardExists(cardTitle);
+
                                 if (res_is_card > 0) {
-                                    Toast.makeText(getContext(), "Card with this title already exists.", Toast.LENGTH_SHORT).show();
+                                    // Сообщение для существующей карты
+                                    requireActivity().runOnUiThread(() -> {
+                                        Toast.makeText(getContext(), "Бұл карта базада бар", Toast.LENGTH_SHORT).show();
+                                    });
                                 } else {
-                                    Toast.makeText(getContext(), "Card HAVE", Toast.LENGTH_SHORT).show();
+                                    // Создание и вставка новой карты
+                                    Card newCard = new Card();
+                                    newCard.setCardTitle(cardTitle);
+                                    newCard.setCardTotal(cardTotal);
+                                    cardDao.insert(newCard);
+
+                                    // Уведомление об успешном добавлении карты
+                                    requireActivity().runOnUiThread(() -> {
+                                        Toast.makeText(getContext(), "Карта қосылды", Toast.LENGTH_SHORT).show();
+                                    });
                                 }
                             });
-                        }).start();
-                    }else{
-                        Toast.makeText(getContext(), "Field is empty", Toast.LENGTH_LONG).show();
+                        } catch (NumberFormatException e) {
+                            // Обработка ошибки при неверном формате числа
+                            Toast.makeText(getContext(), "Неверный формат суммы", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        // Ошибка, если одно из полей пустое
+                        Toast.makeText(getContext(), "Поля не могут быть пустыми", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Отмена", (dialog, which) -> {
@@ -129,4 +145,5 @@ public class CardFragment extends Fragment {
                 .create()
                 .show();
     }
+
 }
