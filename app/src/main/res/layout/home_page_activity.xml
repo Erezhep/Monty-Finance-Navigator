@@ -21,7 +21,7 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="0dp"
         android:background="@color/bottom_nav"
-        app:itemIconSize="24dp"
+        app:itemIconSize="20dp"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
         app:labelVisibilityMode="selected"

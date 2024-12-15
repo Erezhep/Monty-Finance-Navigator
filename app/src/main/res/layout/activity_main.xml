@@ -5,18 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/main_fon_color"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/text_only_And"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/open_sans_bold"
         android:text="@string/first_page_text"
         android:textAlignment="center"
-        android:textColor="@color/monty"
+        android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,7 +14,38 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/open_sans_regular"
         android:text="@string/welcome_back"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/text_color_with_alpha"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textWelcomeBack"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Username"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/home_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="434dp"
+        android:background="@drawable/main_fon_color" />
+
 </RelativeLayout>

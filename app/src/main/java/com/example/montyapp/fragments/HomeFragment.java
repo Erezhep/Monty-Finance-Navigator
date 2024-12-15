@@ -61,11 +61,7 @@ public class HomeFragment extends Fragment {
 
     SharedPreferences sharedPreferences;
     String user;
-    TextView textView1;
-    private List<Item> payments;
-    private ListView listView;
-    private ArrayAdapter<String> adapter;
-
+    TextView username;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,42 +80,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        payments = new ArrayList<>();
-        payments.add(new Item("Kaspi Bank", 1500.00));
-        payments.add(new Item("Halyk Bank", -1200.50));
-        payments.add(new Item("Jusan Bank", 3000.75));
-        payments.add(new Item("Forte Bank", 2000.00));
-        payments.add(new Item("Eurasian Bank", -750.25));
-        payments.add(new Item("Bank CenterCredit", 500.00));
-        payments.add(new Item("ATF Bank", 1000.75));
-        payments.add(new Item("Sberbank", -1350.50));
-        payments.add(new Item("Kaspi Bank", 2450.00));
-        payments.add(new Item("Halyk Bank", -980.60));
-        payments.add(new Item("Jusan Bank", 4300.85));
-        payments.add(new Item("Forte Bank", -1200.15));
-        payments.add(new Item("Eurasian Bank", 1800.00));
-        payments.add(new Item("Bank CenterCredit", -620.30));
-        payments.add(new Item("ATF Bank", 750.00));
-        payments.add(new Item("Sberbank", 1500.25));
-
-
-        listView = rootView.findViewById(R.id.listHistory);
-
-        ItemsHistory adapter = new ItemsHistory(getContext(), payments);
-        listView.setAdapter(adapter);
-
-
-        // TextView text = rootView.findViewById(R.id.nameText1);
-        // text.setText(user);
-
-        Button buttonAdd = rootView.findViewById(R.id.buttonAdd);
-        buttonAdd.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Button +", Toast.LENGTH_SHORT).show();
-            }
-        });
+        username = rootView.findViewById(R.id.username);
+        username.setText(user);
 
         return rootView;
     }
