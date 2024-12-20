@@ -16,8 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.montyapp.R;
-import com.example.montyapp.templates.Item;
-import com.example.montyapp.templates.ItemsHistory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,22 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".fragments.CardFragment">
-    
-    <Button
-        android:id="@+id/button_add_card"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="31dp"
-        android:background="@drawable/card_round_button"
-        android:fontFamily="@font/roboto_reg1"
-        android:text="+"
-        android:textColor="@color/monty"
-        android:textSize="64sp" />
-
-</RelativeLayout>
+    tools:context=".fragments.CardFragment"/>
