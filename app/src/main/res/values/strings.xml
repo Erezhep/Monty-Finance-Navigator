@@ -11,6 +11,10 @@
     <string name="your_balance">Сіздің баланста:</string>
     <string name="statistica_text">Статистика</string>
     <string name="text_history">Тарих</string>
+    <string name="first_page_text_name">Аты-жөніңіз:</string>
+    <string name="first_page_hint_name">Аты-жөніңізді енгізіңіз</string>
+    <string name="first_page_text_gmail">Почтаңыз:</string>
+    <string name="first_page_hint_gmail">Почтаңызды енгізіңіз</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
