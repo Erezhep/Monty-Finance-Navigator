@@ -211,6 +211,7 @@
             android:layout_marginEnd="21dp"
             android:background="@drawable/button_rounded_fon_add_pay"
             android:fontFamily="@font/open_sans_semibold"
+            android:onClick="onClickAddExpensive"
             android:text="@string/button_text"
             android:textColor="@color/bottom_nav"
             android:textSize="18sp" />

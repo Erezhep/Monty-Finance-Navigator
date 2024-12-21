@@ -2,23 +2,33 @@ package com.example.montyapp;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 public class AddExpenceActivity extends AppCompatActivity {
 
+    List<String> spinnerData = new ArrayList<>();
+
     String paymentName;
     TextView namePayType;
+    EditText edName;
+    EditText edSumma;
+    EditText editTextDate;
+    Spinner spinnerCards;
+    EditText edInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +46,10 @@ public class AddExpenceActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.spinnerCards);
 
         // Данные для Spinner
-        List<String> spinnerData = Arrays.asList("Таңдаңыз", "Kaspi Bank", "Halyk Bank", "Jusan Bank", "ForteBank");
+        spinnerData.add("Таңдаңыз");
+        spinnerData.add("Kaspi Bank");
+        spinnerData.add("Halyk Bank");
+        spinnerData.add("ForteBank");
 
         // Адаптер с пользовательскими макетами
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -78,9 +91,48 @@ public class AddExpenceActivity extends AppCompatActivity {
     private void init(){
         namePayType = findViewById(R.id.namePayType);
         paymentName = getIntent().getStringExtra("payment_name");
+
+        edName = findViewById(R.id.edName);
+        edSumma = findViewById(R.id.edSumma);
+        editTextDate = findViewById(R.id.editTextDate);
+        spinnerCards = findViewById(R.id.spinnerCards);
+        edInfo = findViewById(R.id.edInfo);
+    }
+
+    public boolean isEmptyField(EditText edit){
+        String text = edit.getText().toString().trim();
+        if (TextUtils.isEmpty(text)){
+            edit.setBackgroundResource(R.drawable.edit_file_error_background);
+            return true;
+        }
+        else {
+            edit.setBackgroundResource(R.drawable.edit_field_background);
+            return false;
+        }
     }
 
     public void onClickBack(View view){
         onBackPressed();
+    }
+
+    public void onClickAddExpensive(View view){
+        boolean isEmptyName = isEmptyField(edName);
+        boolean isEmptySumma = isEmptyField(edSumma);
+        boolean isEmptyDate = isEmptyField(editTextDate);
+        boolean isEmptySpinner = false;
+        if (spinnerData.size() < 2){
+            Toast.makeText(this, R.string.spinner_error, Toast.LENGTH_SHORT).show();
+            isEmptySpinner = true;
+        }
+        if (spinnerCards.getSelectedItemPosition() == 0){
+            Toast.makeText(this, R.string.spinner_choose, Toast.LENGTH_SHORT).show();
+            isEmptySpinner = true;
+        }
+        if (!isEmptySpinner){
+            spinnerCards.setBackgroundResource(R.drawable.edit_field_background);
+        }
+        if (!isEmptyName && !isEmptySumma && !isEmptyDate && !isEmptySpinner){
+            Toast.makeText(this, "Succesfully!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

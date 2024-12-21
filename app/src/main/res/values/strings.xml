@@ -34,10 +34,15 @@
 
     <!-- List Type Payments -->
     <string-array name="type_payments">
-        <item>Ұялы телефон</item>
         <item>Ком. қызметтер</item>
         <item>Көлік</item>
         <item>Интернет</item>
+        <item>Білім</item>
+        <item>Айыппұл,салық</item>
+        <item>Қайырымдылық</item>
+        <item>Сатып алу,тапсырыстар</item>
+        <item>Ойындар</item>
+        <item>Басқасы</item>
     </string-array>
 
     <!-- Add Expencive Page -->
@@ -54,4 +59,7 @@
 
     <string name="button_text">Төлемді қосу</string>
 
+    <!-- Toast messages -->
+    <string name="spinner_error">Карта бөлімінде жаңа карта енгізіңіз</string>
+    <string name="spinner_choose">Карта таңдаңыз</string>
 </resources>
