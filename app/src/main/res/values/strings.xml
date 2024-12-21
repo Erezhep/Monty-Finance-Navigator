@@ -48,7 +48,7 @@
     <!-- Add Expencive Page -->
     <string name="add_pay">Төлем қосу</string>
 
-    <string name="pay_com_hint">Қолданылған қызмет түрін енгізіңіз</string>
+    <string name="pay_com_hint">Қолданылған қызмет атауын енгізіңіз</string>
     <string name="pay_summa">Төлем көлемі</string>
     <string name="pay_summa_hint">Төлем көлемін енгізіңіз</string>
     <string name="pay_time">Уақыты</string>
