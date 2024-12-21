@@ -62,4 +62,8 @@
     <!-- Toast messages -->
     <string name="spinner_error">Карта бөлімінде жаңа карта енгізіңіз</string>
     <string name="spinner_choose">Карта таңдаңыз</string>
+
+    <!-- Card Page -->
+    <string name="add_your_card">Өз картаңызды қосыңыз</string>
+    <string name="information">Біз сіздің қауіпсіздігіңізді басты назарда ұстаймыз! Бұл ақпарат картаңыздың құпия мәліметтерін қамтымайды</string>
 </resources>

@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <FrameLayout
+        android:layout_width="324dp"
+        android:layout_height="209dp"
+        android:background="@drawable/card_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textDebitCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="Debit\nCard"
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/cardTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="29dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="₸ 0.00"
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="132dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:letterSpacing="0.33308"
+            android:text="6219  ****  ****  8075"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="13.69sp" />
+
+        <TextView
+            android:id="@+id/cardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="160dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Kaspi Bank"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textDirection="inherit"
+            android:textSize="13.69sp" />
+
+        <TextView
+            android:id="@+id/cardPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="22/01"
+            android:textAlignment="textEnd"
+            android:textColor="#fff"
+            android:textSize="13.69dp" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

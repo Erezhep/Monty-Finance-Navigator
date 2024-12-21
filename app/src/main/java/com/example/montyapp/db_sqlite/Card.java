@@ -15,17 +15,25 @@ public class Card {
     @ColumnInfo(name = "card_title")
     private String cardTitle;
 
+    @ColumnInfo(name = "card_number")
+    private String cardNumber;
+
+    @ColumnInfo(name = "card_period")
+    private String cardPeriod;
+
     @ColumnInfo(name = "card_total")
     private double cardTotal;
 
     // Setters
-    public void setCardID(int cardID) {
-        this.cardID = cardID;
-    }
+    public void setCardID(int cardID) { this.cardID = cardID; }
 
     public void setCardTitle(String cardTitle) {
         this.cardTitle = cardTitle;
     }
+
+    public void setCardPeriod(String cardPeriod) { this.cardPeriod = cardPeriod; }
+
+    public void setCardNumber(String cardNumber) { this.cardNumber = cardNumber; }
 
     public void setCardTotal(double cardTotal) {
         this.cardTotal = cardTotal;
@@ -39,6 +47,10 @@ public class Card {
     public String getCardTitle() {
         return cardTitle;
     }
+
+    public String getCardNumber() { return cardNumber; }
+
+    public String getCardPeriod() { return cardPeriod; }
 
     public double getCardTotal() {
         return cardTotal;

@@ -4,11 +4,16 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import com.example.montyapp.R;
+import com.example.montyapp.adapter.CardAdapter;
 import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Card;
 import com.example.montyapp.db_sqlite.Dao.CardDao;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -59,6 +66,10 @@ public class CardFragment extends Fragment {
         return fragment;
     }
 
+    private RecyclerView recyclerView;
+    private CardAdapter cardAdapter;
+    private List<Card> cardList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +88,32 @@ public class CardFragment extends Fragment {
         // Найдите кнопку и установите слушатель
         // rootView.findViewById(R.id.button_add_card).setOnClickListener(v -> showCustomDialog());
 
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+
+        loadCardData();
+
+        cardAdapter = new CardAdapter(cardList);
+        recyclerView.setAdapter(cardAdapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
         return rootView;
+    }
+
+    private void loadCardData() {
+        // Здесь тебе нужно загрузить данные из базы данных (например, используя Room)
+        // Это пример, ты можешь использовать Repository и ViewModel для загрузки данных
+        cardList = new ArrayList<>();
+        for (int i = 1; i < 8; i++){
+            Card card = new Card();
+            card.setCardTitle("Card " + i);
+            card.setCardNumber("1234  ****  ****  5432");
+            card.setCardPeriod("12/2" + (i + 5));
+            card.setCardTotal(520.22 * i);
+            cardList.add(card);
+        }
     }
 
 }
