@@ -1,6 +1,7 @@
 package com.example.montyapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -18,12 +19,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.montyapp.AddExpenceActivity;
 import com.example.montyapp.R;
 import com.example.montyapp.adapter.TypePaymentsAdapter;
 import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
 import com.example.montyapp.db_sqlite.TypePayments;
-import com.example.montyapp.view_models.TypePaymentsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,6 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private TypePaymentsAdapter adapter;
-    private TypePaymentsViewModel typePaymentsViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -156,7 +156,15 @@ public class HomeFragment extends Fragment {
 
     private void onItemClick(TypePayments typePayments) {
         // Действие при клике по элементу
-        Toast.makeText(getContext(), "Clicked: " + typePayments.getTypePaymentName(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getContext(), "Clicked: " + typePayments.getTypePaymentName(), Toast.LENGTH_SHORT).show();
+
+        // Создаем Intent для открытия нового Activity
+        Intent intent = new Intent(getContext(), AddExpenceActivity.class);
+
+        // Передаем данные через геттеры (например, имя типа платежа)
+        intent.putExtra("payment_name", typePayments.getTypePaymentName());
+
+        startActivity(intent);
     }
 
 

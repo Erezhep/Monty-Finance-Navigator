@@ -40,5 +40,18 @@
         <item>Интернет</item>
     </string-array>
 
+    <!-- Add Expencive Page -->
+    <string name="add_pay">Төлем қосу</string>
+
+    <string name="pay_com_hint">Қолданылған қызмет түрін енгізіңіз</string>
+    <string name="pay_summa">Төлем көлемі</string>
+    <string name="pay_summa_hint">Төлем көлемін енгізіңіз</string>
+    <string name="pay_time">Уақыты</string>
+    <string name="pay_time_hint">Уақытты таңдаңыз</string>
+    <string name="pay_card">Картаны таңдаңыз</string>
+    <string name="pay_info">Толығырақ</string>
+    <string name="pay_info_hint">Төлем туралы толығырақ ақпарат енгізіңіз</string>
+
+    <string name="button_text">Төлемді қосу</string>
 
 </resources>

@@ -10,9 +10,11 @@
     <color name="text_color_with_alpha">#66222222</color>
     <color name="selected">#408782</color>
     <color name="app_color">#408782</color>
+    <color name="app_color_light">#69AEA9</color>
     <color name="app_color_yet">#63B5AF</color>
     <color name="unselected">#CBCBDD</color>
     <color name="deactivate_color">#DDDDDD</color>
     <color name="color_do_not_see">#000000ff</color>
     <color name="layout_background_color_home_page">#D9D9D9</color>
+    <color name="add_text_page">#666666</color>
 </resources>
