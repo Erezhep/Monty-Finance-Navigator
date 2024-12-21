@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,24 +19,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.montyapp.R;
+import com.example.montyapp.adapter.TypePaymentsAdapter;
+import com.example.montyapp.db_sqlite.AppDatabase;
+import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
+import com.example.montyapp.db_sqlite.TypePayments;
+import com.example.montyapp.view_models.TypePaymentsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -59,7 +60,15 @@ public class HomeFragment extends Fragment {
 
     SharedPreferences sharedPreferences;
     String user;
+    Integer is_first;
     TextView username;
+    TextView textWelcomeBack;
+    private List<TypePayments> typePaymentsList = new ArrayList<>();
+
+    private RecyclerView recyclerView;
+    private TypePaymentsAdapter adapter;
+    private TypePaymentsViewModel typePaymentsViewModel;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +79,7 @@ public class HomeFragment extends Fragment {
         }
         sharedPreferences = getActivity().getSharedPreferences("AppData", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("username", "default");
+        is_first = sharedPreferences.getInt("is_first", 0);
 
     }
 
@@ -79,9 +89,74 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         username = rootView.findViewById(R.id.username);
+        textWelcomeBack = rootView.findViewById(R.id.textWelcomeBack);
         username.setText(user);
 
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String welcome_back = getString(R.string.welcome_back);
+        String welcome_try = getString(R.string.welcome_try);
+
+        if (is_first == 1){
+            textWelcomeBack.setText(welcome_back);
+            editor.putInt("is_first", 2);
+            editor.apply();
+        }else{
+            textWelcomeBack.setText(welcome_try);
+        }
+
+        recyclerView = rootView.findViewById(R.id.recyclerViewTypePayments);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Инициализация адаптера с передачей listener для обработки кликов
+        adapter = new TypePaymentsAdapter(typePaymentsList, this::onItemClick);
+        recyclerView.setAdapter(adapter);
+
+        loadPaymentsFromDatabase();
+
         return rootView;
+    }
+
+    private void loadPaymentsFromDatabase() {
+        // Используем ExecutorService для работы с базой данных в фоновом потоке
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Получаем все записи из базы данных
+                List<TypePayments> allPayments = getAllPayments();
+
+                // Обновляем список в основном потоке
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Обновляем данные адаптера
+                        typePaymentsList.clear();
+                        typePaymentsList.addAll(allPayments);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+    }
+
+    private List<TypePayments> getAllPayments() {
+        // Список для хранения всех платежей
+        List<TypePayments> allPayments = new ArrayList<>();
+
+        // Открываем базу данных
+        AppDatabase db = AppDatabase.getDatabase(getContext());
+        TypePaymentsDao typePaymentsDao = db.typePaymentsDao();
+
+        // Получаем все данные из базы данных
+        allPayments = typePaymentsDao.getAllTypePayments(); // или ваш метод получения данных
+
+        return allPayments;
+    }
+
+    private void onItemClick(TypePayments typePayments) {
+        // Действие при клике по элементу
+        Toast.makeText(getContext(), "Clicked: " + typePayments.getTypePaymentName(), Toast.LENGTH_SHORT).show();
     }
 
 

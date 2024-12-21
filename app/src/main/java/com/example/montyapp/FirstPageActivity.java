@@ -117,6 +117,8 @@ public class FirstPageActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = data.edit();
                 editor.putString("username", name);
                 editor.putString("email", email);
+                editor.putBoolean("payment", false);
+                editor.putInt("is_first", 1);
                 editor.apply();
                 Intent intent = new Intent(FirstPageActivity.this, HomePageActivity.class);
                 startActivity(intent);

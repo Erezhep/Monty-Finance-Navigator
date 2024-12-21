@@ -1,25 +1,44 @@
 <resources>
+    <!-- Main -->
     <string name="app_name">MontyApp</string>
     <string name="first_page_text">Monty: Finance Navigator</string>
-    <string name="hint_name">Есіміңізді енгізіңіз:</string>
     <string name="button_start">Бастау</string>
+
+    <!-- Menu -->
     <string name="home_page_text">Басты бет</string>
     <string name="card_page_text">Карта</string>
     <string name="statistic_page_text">Статистика</string>
     <string name="profile_page_text">Профиль</string>
-    <string name="welcome_text">Қош келдіңіз!</string>
+
+    <!-- Welcome -->
+    <string name="welcome_back">Қайта оралуыңызбен,</string>
+    <string name="welcome_try">Қайта оралуыңызбен,</string>
     <string name="your_balance">Сіздің баланста:</string>
     <string name="statistica_text">Статистика</string>
     <string name="text_history">Тарих</string>
+
+    <!-- Information about user -->
     <string name="first_page_text_name">Аты-жөніңіз:</string>
     <string name="first_page_hint_name">Аты-жөніңізді енгізіңіз</string>
     <string name="first_page_text_gmail">Почтаңыз:</string>
     <string name="first_page_hint_gmail">Почтаңызды енгізіңіз</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Card All Information -->
+    <string name="text_expence">Шығын</string>
+    <string name="text_income">Кіріс</string>
+    <string name="text_all_summa">Жалпы баланста</string>
 
-    <string name="welcome_back">Қайта оралуыңызбен,</string>
+    <!-- List Payments -->
+    <string name="payment_type">Төлем түрлері</string>
+    <string name="choose_payment_type">Төлем түрін таңдаңыз</string>
+
+    <!-- List Type Payments -->
+    <string-array name="type_payments">
+        <item>Ұялы телефон</item>
+        <item>Ком. қызметтер</item>
+        <item>Көлік</item>
+        <item>Интернет</item>
+    </string-array>
 
 
 </resources>

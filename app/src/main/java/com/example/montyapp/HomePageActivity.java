@@ -1,5 +1,6 @@
 package com.example.montyapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
+import com.example.montyapp.db_sqlite.TypePayments;
 import com.example.montyapp.fragments.CardFragment;
 import com.example.montyapp.fragments.HomeFragment;
 import com.example.montyapp.fragments.ProfileFragment;
@@ -18,6 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class HomePageActivity extends AppCompatActivity {
+    SharedPreferences data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +34,13 @@ public class HomePageActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
         AppDatabase db = AppDatabase.getDatabase(this);
+
+        data = getSharedPreferences("AppData", MODE_PRIVATE);
+        Boolean added = data.getBoolean("payment", false);
+
+        if (!added){
+            add_payment_types_in_db();
+        }
 
 
         // Загружаем фрагмент по умолчанию
@@ -70,7 +80,27 @@ public class HomePageActivity extends AppCompatActivity {
         executorService.execute(() -> {
             AppDatabase db = AppDatabase.getDatabase(this);
             TypePaymentsDao typePaymentsDao = db.typePaymentsDao();
-            String[] paymentTypes = {};
+            if (typePaymentsDao.getAllTypePayments().isEmpty()) {
+                String[] paymentTypes = getResources().getStringArray(R.array.type_payments);
+                Integer[] iconIDs = {
+                        R.drawable.payment_phone,
+                        R.drawable.payment_home,
+                        R.drawable.payment_car,
+                        R.drawable.payment_internet
+                };
+
+                for (int i = 0; i < iconIDs.length; i++) {
+                    TypePayments type = new TypePayments();
+                    type.setTypePaymentName(paymentTypes[i]);
+                    type.setIconResId(iconIDs[i]);
+                    typePaymentsDao.insert(type);  // Вставляем только если пусто
+                }
+
+                // Обновляем флаг, что типы платежей были добавлены
+                SharedPreferences.Editor editor = data.edit();
+                editor.putBoolean("payment", true);
+                editor.apply();
+            }
         });
     }
 }

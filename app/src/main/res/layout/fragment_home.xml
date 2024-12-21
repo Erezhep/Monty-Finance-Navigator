@@ -4,48 +4,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/ic_launcher_background"
     tools:context=".fragments.HomeFragment">
 
-    <TextView
-        android:id="@+id/textWelcomeBack"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
+        android:layout_below="@+id/frameLayout"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/open_sans_regular"
-        android:text="@string/welcome_back"
-        android:textColor="@color/text_color_with_alpha"
-        android:textSize="13sp" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textWelcomeBack"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:text="Username"
-        android:textColor="@color/text_color"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/textChoosePymentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/choose_payment_type"
+            android:textColor="#666666"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textPymentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_medium"
+            android:text="@string/payment_type"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewTypePayments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="20dp" />
+    </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/home_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="237dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="434dp"
-        android:background="@drawable/main_fon_color" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/half_round_background">
+
+        <TextView
+            android:id="@+id/textWelcomeBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/open_sans_medium"
+            android:text="@string/welcome_back"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="Ережеп Бекарыс"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="202dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/card_background_home_frag">
+
+        <TextView
+            android:id="@+id/textAllSumma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/text_all_summa"
+            android:textColor="#CCFFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/all_summa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="₸ 0.00"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imageArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="118dp"
+            android:src="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/imageArrow180"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="118dp"
+            android:layout_marginEnd="103dp"
+            android:rotation="180"
+            android:src="@drawable/arrow" />
+
+        <TextView
+            android:id="@+id/textInCome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="119dp"
+            android:fontFamily="@font/open_sans_medium"
+            android:text="@string/text_income"
+            android:textColor="#CCFFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textExpensive"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="119dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/text_expence"
+            android:textColor="#CCFFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Income"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="148dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="₸ 0.00"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Expensive"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="148dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="₸ 0.00"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="20sp" />
+    </FrameLayout>
 
 </RelativeLayout>
