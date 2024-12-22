@@ -1,8 +1,11 @@
 package com.example.montyapp.fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.montyapp.AddNewCardActivity;
+import com.example.montyapp.CardDetailsActivity;
 import com.example.montyapp.R;
 import com.example.montyapp.adapter.CardAdapter;
 import com.example.montyapp.db_sqlite.AppDatabase;
@@ -85,17 +88,36 @@ public class CardFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_card, container, false);
 
+        Button nextNewCard = rootView.findViewById(R.id.nextNewCard);
+        nextNewCard.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AddNewCardActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Найдите кнопку и установите слушатель
         // rootView.findViewById(R.id.button_add_card).setOnClickListener(v -> showCustomDialog());
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         loadCardData();
 
-        cardAdapter = new CardAdapter(cardList);
+        cardAdapter = new CardAdapter(cardList, new CardAdapter.OnCardClickListener() {
+            @Override
+            public void onCardClick(Card card) {
+                Intent intent = new Intent(getContext(), CardDetailsActivity.class);
+                intent.putExtra("cardTitle", card.getCardTitle());
+                intent.putExtra("cardTotal", card.getCardTotal());
+                startActivity(intent);
+            }
+        });
+
+
         recyclerView.setAdapter(cardAdapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
 

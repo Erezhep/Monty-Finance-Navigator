@@ -65,5 +65,17 @@
 
     <!-- Card Page -->
     <string name="add_your_card">Өз картаңызды қосыңыз</string>
-    <string name="information">Біз сіздің қауіпсіздігіңізді басты назарда ұстаймыз! Бұл ақпарат картаңыздың құпия мәліметтерін қамтымайды</string>
+    <string name="card_add">Картаны қосу</string>
+    <string name="information">Біз сіздің қауіпсіздігіңізді басты назарда ұстаймыз! Бұл ақпараттар картаңыздың құпия мәліметтерін қамтымайды</string>
+    <string name="textCardTitle">Карта атауы</string>
+    <string name="textCardNumber">Карта нөмері</string>
+    <string name="textCardPeriod">Жарамдылық мерзімі</string>
+    <string name="textCardTotal">Бастапқы баланс</string>
+
+    <!-- Card Insert Page -->
+    <string name="card_add_money">Картаны толтыру</string>
+    <string name="add_cash_total">Толтыру көлемі</string>
+    <string name="add_cash_date">Уақыты</string>
+    <string name="add_cash_info">Толығырақ</string>
+    <string name="add_cash_info_hint">Қосымша ақпарат</string>
 </resources>

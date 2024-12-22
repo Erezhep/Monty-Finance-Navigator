@@ -1,5 +1,6 @@
 package com.example.montyapp.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
     private List<Card> cardList;
+    private OnCardClickListener onCardClickListener;
 
     // Конструктор адаптера
-    public CardAdapter(List<Card> cardList) {
+    public CardAdapter(List<Card> cardList, OnCardClickListener listener) {
         this.cardList = cardList;
+        this.onCardClickListener = listener;
     }
 
     @NonNull
@@ -37,11 +40,21 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.cardNumber.setText(card.getCardNumber());
         holder.cardPeriod.setText(card.getCardPeriod());
         holder.cardTotal.setText("₸" + String.valueOf(card.getCardTotal()));
+
+        holder.itemView.setOnClickListener(v -> {
+            if (onCardClickListener != null) {
+                onCardClickListener.onCardClick(card); // Передаем выбранную карточку
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return cardList.size();
+    }
+
+    public interface OnCardClickListener {
+        void onCardClick(Card card);
     }
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {

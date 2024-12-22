@@ -25,6 +25,8 @@
         <activity android:name=".FirstPageActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".AddExpenceActivity" />
+        <activity android:name=".CardDetailsActivity"/>
+        <activity android:name=".AddNewCardActivity"/>
     </application>
 
 </manifest>
