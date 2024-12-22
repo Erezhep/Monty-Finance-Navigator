@@ -14,8 +14,8 @@ public interface TypePaymentsDao {
     @Insert
     void insert(TypePayments typePayments);
 
-    @Query("SELECT * FROM type_payments WHERE icon_res_id = :id")
-    TypePayments getTypePaymentById(int id);
+    @Query("SELECT * FROM type_payments WHERE icon_res_id = :icon_id")
+    TypePayments getTypePaymentById(int icon_id);
 
     @Query("SELECT * FROM type_payments")
     List<TypePayments> getAllTypePayments();

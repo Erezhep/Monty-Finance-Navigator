@@ -48,7 +48,7 @@ public class CardDetailsActivity extends Activity {
 
         Intent intent = getIntent();
         card_title.setText(intent.getStringExtra("cardTitle"));
-        card_total.setText("₸" + String.valueOf(intent.getDoubleExtra("cardTotal", 0.0)));
+        card_total.setText(String.format("₸ %,1.2f", intent.getDoubleExtra("cardTotal", 0.0)));
         cardNumber = intent.getStringExtra("cardNumber");
         cardTitle = getIntent().getStringExtra("cardTitle");
 
@@ -159,7 +159,7 @@ public class CardDetailsActivity extends Activity {
 
                         TypePayments type = typePaymentsDao.getTypePaymentById(R.drawable.payment_bank);
                         Payments payment = new Payments();
-                        payment.setPaymentTitle(card.getCardTitle() + R.string.bank_card);
+                        payment.setPaymentTitle(card.getCardTitle());
                         payment.setPaymentSumma(summa);
                         payment.setPaymentDate(date);
                         payment.setPaymentInfo(info);

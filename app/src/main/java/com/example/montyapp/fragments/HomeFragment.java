@@ -23,9 +23,14 @@ import com.example.montyapp.AddExpenceActivity;
 import com.example.montyapp.R;
 import com.example.montyapp.adapter.TypePaymentsAdapter;
 import com.example.montyapp.db_sqlite.AppDatabase;
+import com.example.montyapp.db_sqlite.Card;
+import com.example.montyapp.db_sqlite.Dao.CardDao;
+import com.example.montyapp.db_sqlite.Dao.PaymentsDao;
 import com.example.montyapp.db_sqlite.Dao.TypePaymentsDao;
+import com.example.montyapp.db_sqlite.Payments;
 import com.example.montyapp.db_sqlite.TypePayments;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -64,6 +69,11 @@ public class HomeFragment extends Fragment {
     Integer is_first;
     TextView username;
     TextView textWelcomeBack;
+
+    TextView all_summa;
+    TextView textInCome;
+    TextView textExpensive;
+
     private List<TypePayments> typePaymentsList = new ArrayList<>();
 
     private RecyclerView recyclerView;
@@ -92,6 +102,10 @@ public class HomeFragment extends Fragment {
         textWelcomeBack = rootView.findViewById(R.id.textWelcomeBack);
         username.setText(user);
 
+        all_summa = rootView.findViewById(R.id.all_summa);
+        textInCome = rootView.findViewById(R.id.Income);
+        textExpensive = rootView.findViewById(R.id.Expensive);
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String welcome_back = getString(R.string.welcome_back);
@@ -113,8 +127,68 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         loadPaymentsFromDatabase();
+        getAllPaymentToCard();
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllPaymentToCard();
+    }
+
+    private void getAllPaymentToCard(){
+        ExecutorService exec = Executors.newSingleThreadExecutor();
+        exec.execute(() -> {
+            try{
+                AppDatabase db = AppDatabase.getDatabase(requireActivity());
+                TypePaymentsDao typePaymentsDao = db.typePaymentsDao();
+                PaymentsDao paymentsDao = db.paymentsDao();
+                CardDao cardDao = db.cardDao();
+
+                TypePayments type_pay = typePaymentsDao.getTypePaymentById(R.drawable.payment_bank);
+                int icon_id = type_pay.getIconResId();
+
+                double expence = 0.0;
+                double inCome = 0.0;
+
+                List<Payments> bank = paymentsDao.getPaymentsBank(icon_id);
+                List<Payments> notBank = paymentsDao.getPaymentsNotBank(icon_id);
+
+                for (Payments pay : bank) {
+                    inCome += pay.getPaymentSumma();
+                }
+
+                for (Payments paym : notBank) {
+                    expence += paym.getPaymentSumma();
+                }
+
+                // Собираем итоговые суммы
+                double all_total = 0.0;
+                List<Card> cards = cardDao.getAllCards();
+                for (Card card : cards) {
+                    all_total += card.getCardTotal();
+                }
+
+                double finalAll_total = all_total;
+                double finalInCome = inCome;
+                double finalExpense = expence;
+
+                requireActivity().runOnUiThread(() -> {
+                    textInCome.setText(String.format("₸ %,1.2f", finalInCome));
+                    textExpensive.setText(String.format("₸ %,1.2f", finalExpense));
+                    all_summa.setText(String.format("₸ %,1.2f", finalAll_total));
+                });
+
+            }
+            catch (Exception e){
+
+            }
+            finally{
+                exec.shutdown();
+            }
+        });
     }
 
     private void loadPaymentsFromDatabase() {

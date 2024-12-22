@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.montyapp.R;
 import com.example.montyapp.db_sqlite.Card;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +35,28 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         return new CardViewHolder(itemView);
     }
 
+    public String formatCardNumber(String cardNumber){
+        return cardNumber.substring(0, 4) + " " + cardNumber.substring(4, 8) + " "
+                + cardNumber.substring(8, 12) + " " + cardNumber.substring(12, 16);
+    }
+
+    public String formatDate(String date) {
+        String[] parts = date.split("/");
+        return String.format("%02d/%02d", Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+    }
+
+    public String formatNumber(double number){
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.00");
+        return decimalFormat.format(number);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         Card card = cardList.get(position);
         holder.cardTitle.setText(card.getCardTitle());
-        holder.cardNumber.setText(card.getCardNumber());
-        holder.cardPeriod.setText(card.getCardPeriod());
-        holder.cardTotal.setText("₸" + String.valueOf(card.getCardTotal()));
+        holder.cardNumber.setText(formatCardNumber(card.getCardNumber()));
+        holder.cardPeriod.setText(formatDate(card.getCardPeriod()));
+        holder.cardTotal.setText(String.format("₸ %,1.2f", card.getCardTotal()));
 
         holder.itemView.setOnClickListener(v -> {
             if (onCardClickListener != null) {
@@ -56,8 +72,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         else if(newCardList.size() == 0){
             Card def = new Card();
             def.setCardTitle("------");
-            def.setCardNumber("****  ****  ****  ****");
-            def.setCardPeriod("--/--");
+            def.setCardNumber("****************");
+            def.setCardPeriod("00/00");
             def.setCardTotal(0.0);
             newCardList.add(def);// Создаем пустой список, чтобы избежать проблем
         }

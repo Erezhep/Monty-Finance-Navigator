@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.StatisticFragment"
-    android:background="@color/white">
+    android:layout_marginStart="20dp"
+    android:background="@color/white"
+    tools:context=".fragments.StatisticFragment">
 
     <TextView
         android:id="@+id/textStatistca"
@@ -48,6 +49,19 @@
         android:layout_marginEnd="20dp">
 
         <TextView
+            android:id="@+id/textsee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="No Data"
+            android:textAlignment="center"
+            android:textColor="@color/add_text_page"
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,4 +76,5 @@
             android:layout_height="match_parent"
             android:layout_marginTop="30dp" />
     </FrameLayout>
+
 </RelativeLayout>
