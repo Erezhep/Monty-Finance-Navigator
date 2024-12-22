@@ -1,5 +1,8 @@
 package com.example.montyapp.fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.montyapp.R;
 
@@ -61,6 +65,14 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        SharedPreferences data = getActivity().getSharedPreferences("AppData", MODE_PRIVATE);
+        String user = data.getString("username", "default");
+        String email = data.getString("email", "default");
+        TextView profileName = rootView.findViewById(R.id.textNameProfile);
+        TextView profileEmail = rootView.findViewById(R.id.textGmailProfile);
+        profileName.setText(user);
+        profileEmail.setText(email);
+        return rootView;
     }
 }
