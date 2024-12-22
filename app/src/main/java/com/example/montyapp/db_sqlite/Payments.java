@@ -24,6 +24,9 @@ public class Payments {
     @PrimaryKey(autoGenerate = true)
     private int paymentID;
 
+    @ColumnInfo(name = "payment_title")
+    private String paymentTitle;
+
     @ColumnInfo(name = "payment_summa")
     private double paymentSumma;
 
@@ -42,6 +45,10 @@ public class Payments {
     //Setters
     public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
+    }
+
+    public void setPaymentTitle(String paymentTitle) {
+        this.paymentTitle = paymentTitle;
     }
 
     public void setPaymentSumma(double paymentSumma) {
@@ -67,6 +74,10 @@ public class Payments {
     // Getters
     public int getPaymentID() {
         return paymentID;
+    }
+
+    public String getPaymentTitle() {
+        return paymentTitle;
     }
 
     public double getPaymentSumma() {

@@ -94,4 +94,11 @@
     <string name="error_db">Бұл карта нөмері базада бар, басқасын енгізіңіз</string>
     <string name="card_number_error">Карта нөмері 16 саннан тұрады!</string>
     <string name="succesfully">Карта сәтті қосылды</string>
+    <string name="error_card">Бұл карта жарамсыз басқа карта енгізіңіз</string>
+    <string name="less_sum">Төлем жасауға картада қаражат жеткіліксіз</string>
+    <string name="successfull_payment">Төлем сәтті қосылды</string>
+    <string name="successfull_delete">Карта жойылды</string>
+    <string name="please_write">Мәліметтерді толтырыңыз</string>
+    <string name="bank_card">картасын толтыру</string>
+    <string name="successfull_add_total_to_card">Карта сәтті толтырылды</string>
 </resources>

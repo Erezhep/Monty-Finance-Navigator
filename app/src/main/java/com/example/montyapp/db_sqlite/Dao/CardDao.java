@@ -15,12 +15,20 @@ public interface CardDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     void insert(Card card);
 
-    @Query("SELECT COUNT(*) FROM card WHERE card_number = :number")
-    int checkIfCardExists(String number);
+    @Query("SELECT COUNT(*) FROM card WHERE card_number = :number OR card_title = :name")
+    int checkIfCardExists(String number, String name);
 
-    @Query("UPDATE card SET card_total = card_total + :amount WHERE card_number = :cardNumber")
+    @Query("SELECT * FROM card WHERE card_title = :title")
+    Card getIdToTitle(String title);
+
+    @Query("DELETE FROM card WHERE card_title = :title")
+    void deleteByTitle(String title);
+
+    @Query("UPDATE card SET card_total = :amount WHERE card_number = :cardNumber")
     void addFundsToCard(Double amount, String cardNumber);
 
+    @Query("UPDATE card SET card_total = :amount WHERE card_number = :cardNumber")
+    void subtractAmountToCard(Double amount, String cardNumber);
 
     @Query("SELECT * FROM card WHERE cardID = :id")
     Card getCardByID(int id);

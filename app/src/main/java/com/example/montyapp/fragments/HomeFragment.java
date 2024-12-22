@@ -169,6 +169,7 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(getContext(), AddExpenceActivity.class);
 
         // Передаем данные через геттеры (например, имя типа платежа)
+        intent.putExtra("payment_id", typePayments.getTypePaymentID());
         intent.putExtra("payment_name", typePayments.getTypePaymentName());
 
         startActivity(intent);

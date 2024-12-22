@@ -85,7 +85,7 @@ public class AddNewCardActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getDatabase(this);
         CardDao cardDao = db.cardDao();
 
-        int res = cardDao.checkIfCardExists(number);
+        int res = cardDao.checkIfCardExists(number, name);
         if (res != 0){
             return false;
         }else{

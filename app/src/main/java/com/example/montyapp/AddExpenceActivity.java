@@ -3,6 +3,7 @@ package com.example.montyapp;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -13,14 +14,20 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.montyapp.db_sqlite.AppDatabase;
+import com.example.montyapp.db_sqlite.Card;
+import com.example.montyapp.db_sqlite.Dao.CardDao;
+import com.example.montyapp.db_sqlite.Dao.PaymentsDao;
+import com.example.montyapp.db_sqlite.Payments;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AddExpenceActivity extends AppCompatActivity {
-
-    List<String> spinnerData = new ArrayList<>();
 
     String paymentName;
     TextView namePayType;
@@ -30,6 +37,9 @@ public class AddExpenceActivity extends AppCompatActivity {
     Spinner spinnerCards;
     EditText edInfo;
 
+    int type_payment_id;
+    int count = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,30 +47,10 @@ public class AddExpenceActivity extends AppCompatActivity {
 
         init();
         namePayType.setText(paymentName);
+        type_payment_id = getIntent().getIntExtra("payment_id", 0);
         choose_calendar();
-        dropDownSpinner();
+        getCardsToSpinner();
 
-    }
-
-    private void dropDownSpinner(){
-        Spinner spinner = findViewById(R.id.spinnerCards);
-
-        // Данные для Spinner
-        spinnerData.add("Таңдаңыз");
-        spinnerData.add("Kaspi Bank");
-        spinnerData.add("Halyk Bank");
-        spinnerData.add("ForteBank");
-
-        // Адаптер с пользовательскими макетами
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                R.layout.spinner_item, // Макет для основного элемента
-                spinnerData
-        );
-        adapter.setDropDownViewResource(R.layout.spinner_item_dropdown); // Макет для выпадающих элементов
-
-        spinner.setAdapter(adapter);
-        spinner.setSelection(0);
     }
 
     private void choose_calendar(){
@@ -99,6 +89,34 @@ public class AddExpenceActivity extends AppCompatActivity {
         edInfo = findViewById(R.id.edInfo);
     }
 
+    public void getCardsToSpinner(){
+        ExecutorService exec = Executors.newSingleThreadExecutor();
+        exec.execute(() -> {
+            try{
+                AppDatabase db = AppDatabase.getDatabase(this);
+                CardDao cardDao = db.cardDao();
+
+                List<Card> cards = cardDao.getAllCards();
+                ArrayList<String> cardNames = new ArrayList<>();
+                cardNames.add("Картаны таңдаңыз");
+                for (Card card: cards){
+                    cardNames.add(card.getCardTitle());
+                }
+                runOnUiThread(() -> {
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, cardNames);
+                    count = adapter.getCount();
+                    adapter.setDropDownViewResource(R.layout.spinner_item);
+                    spinnerCards.setAdapter(adapter);
+                });
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                exec.shutdown();
+            }
+        }
+        );
+    }
+
     public boolean isEmptyField(EditText edit){
         String text = edit.getText().toString().trim();
         if (TextUtils.isEmpty(text)){
@@ -120,7 +138,7 @@ public class AddExpenceActivity extends AppCompatActivity {
         boolean isEmptySumma = isEmptyField(edSumma);
         boolean isEmptyDate = isEmptyField(editTextDate);
         boolean isEmptySpinner = false;
-        if (spinnerData.size() < 2){
+        if (count == 1){
             Toast.makeText(this, R.string.spinner_error, Toast.LENGTH_SHORT).show();
             isEmptySpinner = true;
         }
@@ -132,7 +150,60 @@ public class AddExpenceActivity extends AppCompatActivity {
             spinnerCards.setBackgroundResource(R.drawable.edit_field_background);
         }
         if (!isEmptyName && !isEmptySumma && !isEmptyDate && !isEmptySpinner){
-            Toast.makeText(this, "Succesfully!", Toast.LENGTH_SHORT).show();
+            String name = edName.getText().toString().trim();
+            Double summa = Double.parseDouble(edSumma.getText().toString().trim());
+            String date = editTextDate.getText().toString().trim();
+            String spin = spinnerCards.getSelectedItem().toString();
+            String info = edInfo.getText().toString();
+
+            ExecutorService exec = Executors.newSingleThreadExecutor();
+            exec.execute(() -> {
+                try{
+                    AppDatabase db = AppDatabase.getDatabase(this);
+                    CardDao cardDao = db.cardDao();
+                    PaymentsDao paymentsDao = db.paymentsDao();
+
+                    Card card = cardDao.getIdToTitle(spin);
+                    if (card.getCardTotal() < summa){
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, R.string.less_sum, Toast.LENGTH_SHORT).show();
+                        });
+                    }else{
+                        try {
+                            Double endTotal = card.getCardTotal() - summa;
+                            cardDao.subtractAmountToCard(endTotal, card.getCardNumber());
+                            Payments new_payment = new Payments();
+                            new_payment.setPaymentTitle(name);
+                            new_payment.setPaymentSumma(summa);
+                            new_payment.setPaymentDate(date);
+                            new_payment.setPaymentInfo(info);
+                            new_payment.setCardID(card.getCardID());
+                            new_payment.setTypePaymentID(type_payment_id);
+
+                            paymentsDao.insert(new_payment);
+
+                            runOnUiThread(() -> {
+                                Toast.makeText(this, R.string.successfull_payment, Toast.LENGTH_SHORT).show();
+                                onBackPressed();
+                            });
+                        }
+                        catch (Exception e){
+                            runOnUiThread(() -> {
+                                Log.e("AddExpenceActivity", "Error while changing data in database", e);
+                                Toast.makeText(this, "Error while changing data in database", Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    }
+                }
+                catch (Exception e){
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Database Error -> AddExpenceActivity.java", Toast.LENGTH_SHORT).show();
+                    });
+                }
+                finally {
+                    exec.shutdown();
+                }
+            });
         }
     }
 }
