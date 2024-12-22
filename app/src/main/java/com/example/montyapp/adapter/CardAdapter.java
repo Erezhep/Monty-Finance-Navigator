@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.montyapp.R;
 import com.example.montyapp.db_sqlite.Card;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
@@ -21,7 +22,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     // Конструктор адаптера
     public CardAdapter(List<Card> cardList, OnCardClickListener listener) {
-        this.cardList = cardList;
+        this.cardList = (cardList != null) ? cardList : new ArrayList<>();;
         this.onCardClickListener = listener;
     }
 
@@ -46,6 +47,23 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 onCardClickListener.onCardClick(card); // Передаем выбранную карточку
             }
         });
+    }
+
+    public void updateData(List<Card> newCardList) {
+        if (newCardList == null) {
+            newCardList = new ArrayList<>();
+        }
+        else if(newCardList.size() == 0){
+            Card def = new Card();
+            def.setCardTitle("------");
+            def.setCardNumber("****  ****  ****  ****");
+            def.setCardPeriod("--/--");
+            def.setCardTotal(0.0);
+            newCardList.add(def);// Создаем пустой список, чтобы избежать проблем
+        }
+        this.cardList.clear();
+        this.cardList.addAll(newCardList);
+        notifyDataSetChanged();
     }
 
     @Override

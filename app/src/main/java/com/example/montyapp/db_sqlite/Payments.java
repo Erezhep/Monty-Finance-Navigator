@@ -30,8 +30,8 @@ public class Payments {
     @ColumnInfo(name = "payment_date")
     private String paymentDate;
 
-    @ColumnInfo(name = "payment_time")
-    private int paymentTime;
+    @ColumnInfo(name = "payment_info")
+    private String paymentInfo;
 
     @ColumnInfo(name = "card_id")
     private int cardID;
@@ -52,8 +52,8 @@ public class Payments {
         this.paymentDate = paymentDate;
     }
 
-    public void setPaymentTime(int paymentTime) {
-        this.paymentTime = paymentTime;
+    public void setPaymentInfo(String paymentInfo) {
+        this.paymentInfo = paymentInfo;
     }
 
     public void setCardID(int cardID) {
@@ -77,8 +77,8 @@ public class Payments {
         return paymentDate;
     }
 
-    public int getPaymentTime() {
-        return paymentTime;
+    public String getPaymentInfo() {
+        return paymentInfo;
     }
 
     public int getCardID() {

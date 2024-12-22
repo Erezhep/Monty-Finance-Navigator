@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/paymentSumma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="+ ₸850.98"
+            android:textAlignment="textEnd"
+            android:textColor="#25A969"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/paymentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="29.5dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Today"
+            android:textColor="@color/add_text_page"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/paymentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="4.5dp"
+            android:fontFamily="@font/open_sans_medium"
+            android:text="Kaspi Bank"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/paymentImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/payment_bank" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

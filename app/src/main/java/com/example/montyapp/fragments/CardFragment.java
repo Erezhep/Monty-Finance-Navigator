@@ -12,6 +12,7 @@ import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Card;
 import com.example.montyapp.db_sqlite.Dao.CardDao;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -111,6 +113,7 @@ public class CardFragment extends Fragment {
                 Intent intent = new Intent(getContext(), CardDetailsActivity.class);
                 intent.putExtra("cardTitle", card.getCardTitle());
                 intent.putExtra("cardTotal", card.getCardTotal());
+                intent.putExtra("cardNumber", card.getCardNumber());
                 startActivity(intent);
             }
         });
@@ -124,18 +127,27 @@ public class CardFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadCardData();
+    }
+
     private void loadCardData() {
         // Здесь тебе нужно загрузить данные из базы данных (например, используя Room)
         // Это пример, ты можешь использовать Repository и ViewModel для загрузки данных
-        cardList = new ArrayList<>();
-        for (int i = 1; i < 8; i++){
-            Card card = new Card();
-            card.setCardTitle("Card " + i);
-            card.setCardNumber("1234  ****  ****  5432");
-            card.setCardPeriod("12/2" + (i + 5));
-            card.setCardTotal(520.22 * i);
-            cardList.add(card);
-        }
+        ExecutorService exec = Executors.newSingleThreadExecutor();
+        exec.execute(() -> {
+            AppDatabase db = AppDatabase.getDatabase(requireContext());
+            CardDao cardDao = db.cardDao();
+
+            List<Card> allCards = cardDao.getAllCards();
+            requireActivity().runOnUiThread(() -> {
+                if (cardAdapter != null){
+                    cardAdapter.updateData(allCards);
+                }
+            });
+        });
     }
 
 }

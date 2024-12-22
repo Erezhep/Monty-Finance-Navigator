@@ -83,6 +83,7 @@ public class HomePageActivity extends AppCompatActivity {
             if (typePaymentsDao.getAllTypePayments().isEmpty()) {
                 String[] paymentTypes = getResources().getStringArray(R.array.type_payments);
                 Integer[] iconIDs = {
+                        R.drawable.payment_bank,
                         R.drawable.payment_home,
                         R.drawable.payment_car,
                         R.drawable.payment_internet,

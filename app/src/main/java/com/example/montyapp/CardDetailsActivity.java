@@ -18,9 +18,12 @@ public class CardDetailsActivity extends Activity {
 
     TextView card_title;
     TextView card_total;
+
     EditText edTotalCardAdd;
     EditText edDateCardAdd;
     EditText edInfoCardAdd;
+
+    String cardNumber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class CardDetailsActivity extends Activity {
         Intent intent = getIntent();
         card_title.setText(intent.getStringExtra("cardTitle"));
         card_total.setText("₸" + String.valueOf(intent.getDoubleExtra("cardTotal", 0.0)));
-
+        cardNumber = intent.getStringExtra("cardNumber");
         choose_calendar();
     }
 

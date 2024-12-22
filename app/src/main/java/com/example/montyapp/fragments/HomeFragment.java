@@ -126,13 +126,20 @@ public class HomeFragment extends Fragment {
                 // Получаем все записи из базы данных
                 List<TypePayments> allPayments = getAllPayments();
 
+                List<TypePayments> filteredPayments = new ArrayList<>();
+                for (TypePayments typePayments : allPayments) {
+                    if (!typePayments.getTypePaymentName().equals("Банк")) {
+                        filteredPayments.add(typePayments);  // Добавляем в новый список только те элементы, которые не "Банк"
+                    }
+                }
+
                 // Обновляем список в основном потоке
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         // Обновляем данные адаптера
                         typePaymentsList.clear();
-                        typePaymentsList.addAll(allPayments);
+                        typePaymentsList.addAll(filteredPayments);
                         adapter.notifyDataSetChanged();
                     }
                 });

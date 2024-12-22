@@ -34,6 +34,7 @@
 
     <!-- List Type Payments -->
     <string-array name="type_payments">
+        <item>Банк</item>
         <item>Ком. қызметтер</item>
         <item>Көлік</item>
         <item>Интернет</item>
@@ -85,4 +86,12 @@
     <string name="hint_card_number">Карта нөмері</string>
     <string name="hint_card_date">Жарамдылық мерзімі</string>
     <string name="hint_card_balance">Бастапқы баланс</string>
+
+    <!-- Fragment Statistica -->
+    <string name="text_stat">Статистика</string>
+
+    <!-- Toast Messages -->
+    <string name="error_db">Бұл карта нөмері базада бар, басқасын енгізіңіз</string>
+    <string name="card_number_error">Карта нөмері 16 саннан тұрады!</string>
+    <string name="succesfully">Карта сәтті қосылды</string>
 </resources>
