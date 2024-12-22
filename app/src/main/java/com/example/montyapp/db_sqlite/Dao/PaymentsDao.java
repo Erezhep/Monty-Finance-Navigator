@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.montyapp.db_sqlite.Payments;
+import com.example.montyapp.helper.PaymentSummary;
 import com.example.montyapp.helper.PaymentWithIcon;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface PaymentsDao {
     @Query("SELECT * FROM payments WHERE paymentID = :id")
     Payments getPaymentById(int id);
 
+    @Query("SELECT * FROM payments")
+    List<Payments> getAllPayments();
+
     @Query("SELECT * FROM payments WHERE type_payment_id = :typePaymentId")
     List<Payments> getPaymentsBank(int typePaymentId);
 
@@ -29,4 +33,10 @@ public interface PaymentsDao {
             "INNER JOIN type_payments ON payments.type_payment_id = type_payments.typePaymentID " +
             "LIMIT 50")
     List<PaymentWithIcon> getPaymentsWithIcons();
+
+    @Query("SELECT payment_date, SUM(payment_summa) AS total FROM payments WHERE isIncome = 1 GROUP BY payment_date ORDER BY payment_date")
+    List<PaymentSummary> getIncomeByDate();
+
+    @Query("SELECT payment_date, SUM(payment_summa) AS total FROM payments WHERE isIncome = 0 GROUP BY payment_date ORDER BY payment_date")
+    List<PaymentSummary> getExpenseByDate();
 }

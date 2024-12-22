@@ -153,15 +153,14 @@ public class HomeFragment extends Fragment {
                 double expence = 0.0;
                 double inCome = 0.0;
 
-                List<Payments> bank = paymentsDao.getPaymentsBank(icon_id);
-                List<Payments> notBank = paymentsDao.getPaymentsNotBank(icon_id);
+                List<Payments> allPayments = paymentsDao.getAllPayments();
 
-                for (Payments pay : bank) {
-                    inCome += pay.getPaymentSumma();
-                }
-
-                for (Payments paym : notBank) {
-                    expence += paym.getPaymentSumma();
+                for (Payments pay: allPayments){
+                    if (pay.isIncome()){
+                        inCome += pay.getPaymentSumma();
+                    }else{
+                        expence += pay.getPaymentSumma();
+                    }
                 }
 
                 // Собираем итоговые суммы

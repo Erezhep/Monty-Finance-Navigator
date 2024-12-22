@@ -42,6 +42,9 @@ public class Payments {
     @ColumnInfo(name = "type_payment_id")
     private int typePaymentID;
 
+    @ColumnInfo(name = "isIncome")
+    private boolean isIncome = false;
+
     //Setters
     public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
@@ -71,6 +74,10 @@ public class Payments {
         this.typePaymentID = typePaymentID;
     }
 
+    public void setIncome(boolean income) {
+        isIncome = income;
+    }
+
     // Getters
     public int getPaymentID() {
         return paymentID;
@@ -98,5 +105,9 @@ public class Payments {
 
     public int getTypePaymentID() {
         return typePaymentID;
+    }
+
+    public boolean isIncome() {
+        return isIncome;
     }
 }

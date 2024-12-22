@@ -165,6 +165,7 @@ public class CardDetailsActivity extends Activity {
                         payment.setPaymentInfo(info);
                         payment.setCardID(card.getCardID());
                         payment.setTypePaymentID(type.getTypePaymentID());
+                        payment.setIncome(true);
                         paymentsDao.insert(payment);
 
                         runOnUiThread(() -> {
