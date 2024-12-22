@@ -78,4 +78,11 @@
     <string name="add_cash_date">Уақыты</string>
     <string name="add_cash_info">Толығырақ</string>
     <string name="add_cash_info_hint">Қосымша ақпарат</string>
+
+    <!-- Add New Card -->
+    <string name="text_add_new_card">Картаны қосу</string>
+    <string name="hint_card_title">Карта атауы</string>
+    <string name="hint_card_number">Карта нөмері</string>
+    <string name="hint_card_date">Жарамдылық мерзімі</string>
+    <string name="hint_card_balance">Бастапқы баланс</string>
 </resources>

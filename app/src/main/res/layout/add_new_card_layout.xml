@@ -35,8 +35,102 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/open_sans_semibold"
-            android:text="@string/add_pay"
+            android:text="@string/text_add_new_card"
             android:textAlignment="center"
+            android:textColor="@color/bottom_nav"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="220dp"
+        android:background="@drawable/round_add_expence"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="37dp"
+            android:background="@drawable/edit_file_deactivate_background"
+            android:ems="10"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="@string/hint_card_title"
+            android:inputType="text"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/add_text_page"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="103dp"
+            android:background="@drawable/edit_file_deactivate_background"
+            android:ems="10"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="@string/hint_card_number"
+            android:inputType="number|numberSigned"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/add_text_page"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edNewCardDate"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="169dp"
+            android:background="@drawable/edit_file_deactivate_background"
+            android:ems="10"
+            android:focusable="false"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="@string/hint_card_date"
+            android:inputType="date"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/add_text_page"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextNumber2"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="235dp"
+            android:background="@drawable/edit_file_deactivate_background"
+            android:ems="10"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="@string/hint_card_balance"
+            android:inputType="number"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/add_text_page"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="310dp"
+            android:layout_marginEnd="21dp"
+            android:background="@drawable/button_rounded_fon_add_pay"
+            android:fontFamily="@font/open_sans_semibold"
+            android:onClick="onClickAddNewCard"
+            android:text="@string/text_add_new_card"
             android:textColor="@color/bottom_nav"
             android:textSize="18sp" />
     </FrameLayout>
