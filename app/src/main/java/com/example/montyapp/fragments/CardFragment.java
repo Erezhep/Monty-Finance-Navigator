@@ -1,6 +1,5 @@
 package com.example.montyapp.fragments;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,24 +11,18 @@ import com.example.montyapp.db_sqlite.AppDatabase;
 import com.example.montyapp.db_sqlite.Card;
 import com.example.montyapp.db_sqlite.Dao.CardDao;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -90,7 +83,7 @@ public class CardFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_card, container, false);
 
-        Button nextNewCard = rootView.findViewById(R.id.nextNewCard);
+        Button nextNewCard = rootView.findViewById(R.id.saveLang);
         nextNewCard.setOnClickListener(new View.OnClickListener(){
 
             @Override

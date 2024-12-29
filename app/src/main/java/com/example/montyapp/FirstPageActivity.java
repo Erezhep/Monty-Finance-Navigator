@@ -2,6 +2,7 @@ package com.example.montyapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.util.Patterns;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class FirstPageActivity extends AppCompatActivity {
 
@@ -34,7 +37,21 @@ public class FirstPageActivity extends AppCompatActivity {
         setContentView(R.layout.first_page_activity);
         init();
         clickEditText();
+        SharedPreferences.Editor edit = data.edit();
+        edit.putString("language", "Қазақша");
+        setLocale("kk");
     }
+
+    public void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+
+        // Обновляем конфигурацию
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+        }
 
     private void init(){
         data = getSharedPreferences("AppData", MODE_PRIVATE);

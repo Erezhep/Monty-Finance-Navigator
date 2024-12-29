@@ -1,0 +1,115 @@
+<resources>
+    <!-- Main -->
+    <string name="app_name">MontyApp</string>
+    <string name="first_page_text">Monty: Финансовый навигатор</string>
+    <string name="button_start">Начать</string>
+
+    <!-- Menu -->
+    <string name="home_page_text">Главная</string>
+    <string name="card_page_text">Карта</string>
+    <string name="statistic_page_text">Статистика</string>
+    <string name="profile_page_text">Профиль</string>
+
+    <!-- Welcome -->
+    <string name="welcome_back">Добро пожаловать назад,</string>
+    <string name="welcome_try">Добро пожаловать,</string>
+    <string name="your_balance">Ваш баланс:</string>
+    <string name="statistica_text">Статистика</string>
+    <string name="text_history">История</string>
+
+    <!-- Information about user -->
+    <string name="first_page_text_name">Ваше имя:</string>
+    <string name="first_page_hint_name">Введите ваше имя</string>
+    <string name="first_page_text_gmail">Ваша почта:</string>
+    <string name="first_page_hint_gmail">Введите вашу почту</string>
+
+    <!-- Card All Information -->
+    <string name="text_expence">Расход</string>
+    <string name="text_income">Доход</string>
+    <string name="text_all_summa">Общий баланс</string>
+
+    <!-- List Payments -->
+    <string name="payment_type">Типы платежей</string>
+    <string name="choose_payment_type">Выберите тип платежа</string>
+
+    <!-- List Type Payments -->
+    <string-array name="type_payments">
+        <item>Банк</item>
+        <item>Ком. услуги</item>
+        <item>Транспорт</item>
+        <item>Интернет</item>
+        <item>Образование</item>
+        <item>Штрафы, налоги</item>
+        <item>Благотворительность</item>
+        <item>Покупки, заказы</item>
+        <item>Игры</item>
+        <item>Другое</item>
+    </string-array>
+
+    <!-- Add Expencive Page -->
+    <string name="add_pay">Добавить платеж</string>
+
+    <string name="pay_com_hint">Введите название использованной услуги</string>
+    <string name="pay_summa">Сумма платежа</string>
+    <string name="pay_summa_hint">Введите сумму платежа</string>
+    <string name="pay_time">Время</string>
+    <string name="pay_time_hint">Выберите время</string>
+    <string name="pay_card">Выберите карту</string>
+    <string name="pay_info">Подробнее</string>
+    <string name="pay_info_hint">Введите дополнительную информацию о платеже</string>
+
+    <string name="button_text">Добавить платеж</string>
+
+    <!-- Toast messages -->
+    <string name="spinner_error">Пожалуйста, введите новую карту</string>
+    <string name="spinner_choose">Выберите карту</string>
+
+    <!-- Card Page -->
+    <string name="add_your_card">Добавьте свою карту</string>
+    <string name="card_add">Добавить карту</string>
+    <string name="information">Мы заботимся о вашей безопасности! Эта информация не включает конфиденциальные данные вашей карты</string>
+    <string name="textCardTitle">Название карты</string>
+    <string name="textCardNumber">Номер карты</string>
+    <string name="textCardPeriod">Срок действия</string>
+    <string name="textCardTotal">Начальный баланс</string>
+
+    <!-- Card Insert Page -->
+    <string name="card_add_money">Пополнить карту</string>
+    <string name="add_cash_total">Сумма пополнения</string>
+    <string name="add_cash_date">Дата</string>
+    <string name="add_cash_info">Подробнее</string>
+    <string name="add_cash_info_hint">Дополнительная информация</string>
+
+    <!-- Add New Card -->
+    <string name="text_add_new_card">Добавить карту</string>
+    <string name="hint_card_title">Название карты</string>
+    <string name="hint_card_number">Номер карты</string>
+    <string name="hint_card_date">Срок действия</string>
+    <string name="hint_card_balance">Начальный баланс</string>
+
+    <!-- Fragment Statistica -->
+    <string name="text_stat">Статистика</string>
+
+    <!-- Toast Messages -->
+    <string name="error_db">Этот номер карты уже существует в базе, введите другой</string>
+    <string name="card_number_error">Номер карты должен содержать 16 цифр!</string>
+    <string name="succesfully">Карта успешно добавлена</string>
+    <string name="error_card">Эта карта недействительна, введите другую карту</string>
+    <string name="less_sum">Недостаточно средств на карте для выполнения платежа</string>
+    <string name="successfull_payment">Платеж успешно добавлен</string>
+    <string name="successfull_delete">Карта удалена</string>
+    <string name="please_write">Пожалуйста, заполните данные</string>
+    <string name="bank_card">пополнить карту</string>
+    <string name="successfull_add_total_to_card">Карта успешно пополнена</string>
+
+    <!-- Language -->
+    <string name="change_lang">Изменить язык</string>
+
+    <string name="save">Сохранить</string>
+
+    <string-array name="lang">
+        <item>Қазақша</item>
+        <item>Русский</item>
+        <item>English</item>
+    </string-array>
+</resources>

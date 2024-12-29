@@ -1,0 +1,116 @@
+<resources>
+    <!-- Main -->
+    <string name="app_name">MontyApp</string>
+    <string name="first_page_text">Monty: Finance Navigator</string>
+    <string name="button_start">Бастау</string>
+
+    <!-- Menu -->
+    <string name="home_page_text">Басты бет</string>
+    <string name="card_page_text">Карта</string>
+    <string name="statistic_page_text">Статистика</string>
+    <string name="profile_page_text">Профиль</string>
+
+    <!-- Welcome -->
+    <string name="welcome_back">Қайта оралуыңызбен,</string>
+    <string name="welcome_try">Қайта оралуыңызбен,</string>
+    <string name="your_balance">Сіздің баланста:</string>
+    <string name="statistica_text">Статистика</string>
+    <string name="text_history">Тарих</string>
+
+    <!-- Information about user -->
+    <string name="first_page_text_name">Аты-жөніңіз:</string>
+    <string name="first_page_hint_name">Аты-жөніңізді енгізіңіз</string>
+    <string name="first_page_text_gmail">Почтаңыз:</string>
+    <string name="first_page_hint_gmail">Почтаңызды енгізіңіз</string>
+
+    <!-- Card All Information -->
+    <string name="text_expence">Шығын</string>
+    <string name="text_income">Кіріс</string>
+    <string name="text_all_summa">Жалпы баланста</string>
+
+    <!-- List Payments -->
+    <string name="payment_type">Төлем түрлері</string>
+    <string name="choose_payment_type">Төлем түрін таңдаңыз</string>
+
+    <!-- List Type Payments -->
+    <string-array name="type_payments">
+        <item>Банк</item>
+        <item>Ком. қызметтер</item>
+        <item>Көлік</item>
+        <item>Интернет</item>
+        <item>Білім</item>
+        <item>Айыппұл,салық</item>
+        <item>Қайырымдылық</item>
+        <item>Сатып алу,тапсырыстар</item>
+        <item>Ойындар</item>
+        <item>Басқасы</item>
+    </string-array>
+
+    <!-- Add Expencive Page -->
+    <string name="add_pay">Төлем қосу</string>
+
+    <string name="pay_com_hint">Қолданылған қызмет атауын енгізіңіз</string>
+    <string name="pay_summa">Төлем көлемі</string>
+    <string name="pay_summa_hint">Төлем көлемін енгізіңіз</string>
+    <string name="pay_time">Уақыты</string>
+    <string name="pay_time_hint">Уақытты таңдаңыз</string>
+    <string name="pay_card">Картаны таңдаңыз</string>
+    <string name="pay_info">Толығырақ</string>
+    <string name="pay_info_hint">Төлем туралы толығырақ ақпарат енгізіңіз</string>
+
+    <string name="button_text">Төлемді қосу</string>
+
+    <!-- Toast messages -->
+    <string name="spinner_error">Карта бөлімінде жаңа карта енгізіңіз</string>
+    <string name="spinner_choose">Карта таңдаңыз</string>
+
+    <!-- Card Page -->
+    <string name="add_your_card">Өз картаңызды қосыңыз</string>
+    <string name="card_add">Картаны қосу</string>
+    <string name="information">Біз сіздің қауіпсіздігіңізді басты назарда ұстаймыз! Бұл ақпараттар картаңыздың құпия мәліметтерін қамтымайды</string>
+    <string name="textCardTitle">Карта атауы</string>
+    <string name="textCardNumber">Карта нөмері</string>
+    <string name="textCardPeriod">Жарамдылық мерзімі</string>
+    <string name="textCardTotal">Бастапқы баланс</string>
+
+    <!-- Card Insert Page -->
+    <string name="card_add_money">Картаны толтыру</string>
+    <string name="add_cash_total">Толтыру көлемі</string>
+    <string name="add_cash_date">Уақыты</string>
+    <string name="add_cash_info">Толығырақ</string>
+    <string name="add_cash_info_hint">Қосымша ақпарат</string>
+
+    <!-- Add New Card -->
+    <string name="text_add_new_card">Картаны қосу</string>
+    <string name="hint_card_title">Карта атауы</string>
+    <string name="hint_card_number">Карта нөмері</string>
+    <string name="hint_card_date">Жарамдылық мерзімі</string>
+    <string name="hint_card_balance">Бастапқы баланс</string>
+
+    <!-- Fragment Statistica -->
+    <string name="text_stat">Статистика</string>
+
+    <!-- Toast Messages -->
+    <string name="error_db">Бұл карта нөмері базада бар, басқасын енгізіңіз</string>
+    <string name="card_number_error">Карта нөмері 16 саннан тұрады!</string>
+    <string name="succesfully">Карта сәтті қосылды</string>
+    <string name="error_card">Бұл карта жарамсыз басқа карта енгізіңіз</string>
+    <string name="less_sum">Төлем жасауға картада қаражат жеткіліксіз</string>
+    <string name="successfull_payment">Төлем сәтті қосылды</string>
+    <string name="successfull_delete">Карта жойылды</string>
+    <string name="please_write">Мәліметтерді толтырыңыз</string>
+    <string name="bank_card">картасын толтыру</string>
+    <string name="successfull_add_total_to_card">Карта сәтті толтырылды</string>
+
+
+    <!-- Language -->
+    <string name="change_lang">Тілді өзгерту</string>
+
+    <string name="save">Сақтау</string>
+
+    <string-array name="lang">
+        <item>Қазақша</item>
+        <item>Русский</item>
+        <item>English</item>
+    </string-array>
+</resources>
